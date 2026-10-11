@@ -1,0 +1,29 @@
+PASS    owner signed in
+PASS    created Manager manager@e2e.test
+PASS    created SalesStaff staff@e2e.test
+PASS    created SalesStaff staff2@e2e.test
+PASS    owner sees the manager
+PASS    owner sees staff
+PASS    owner sees the developer
+PASS 01 owner-team-contacts
+PASS    manager signed in
+PASS    staff signed in
+PASS    owner message rendered
+PASS 02 owner-conversation-sent
+PASS    manager inbox preview shows the message live
+PASS 03 manager-unread-badge-live
+PASS    open conversation appended the message without a reload
+PASS 04 manager-live-message
+PASS    staff sees the manager
+PASS    staff sees the owner
+PASS    staff is NOT offered colleagues
+PASS    staff is NOT offered the developer
+PASS 05 staff-restricted-contacts
+PASS    developer sees the owner
+PASS    developer sees the manager
+PASS    developer is NOT offered staff
+PASS    developer message rendered on the portal side
+PASS 06 dev-portal-messages
+PASS    owner inbox shows the developer conversation
+
+RESULT: 21 checks passed, 6 screenshots

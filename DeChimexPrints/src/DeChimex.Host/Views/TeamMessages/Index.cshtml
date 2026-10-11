@@ -1,0 +1,72 @@
+@using DeChimex.Contracts.InternalMessages
+@{
+    var dev = ViewBag.DevPortal is true;
+    Layout = dev ? "~/Views/Dev/_DevLayout.cshtml" : "_AdminLayout";
+    var conversations = ViewBag.Conversations as IReadOnlyList<ConversationSummaryDto> ?? Array.Empty<ConversationSummaryDto>();
+    var contacts = ViewBag.Contacts as IReadOnlyList<TeamContactDto> ?? Array.Empty<TeamContactDto>();
+    var myUserId = ViewBag.MyUserId is Guid mid ? mid : Guid.Empty;
+    var base_ = dev ? "/dev/messages" : "/admin/team-messages";
+    var card = dev ? "dv-card" : "card";
+    var muted = dev ? "dv-muted dv-small" : "text-sm text-muted";
+    var btn = dev ? "dv-btn" : "btn btn-primary";
+    string Fmt(DateTime? utc) => utc is null ? "" : utc.Value.ToLocalTime().ToString("dd MMM yyyy HH:mm");
+}
+<div style="display:flex;flex-direction:column;gap:16px;max-width:860px">
+    <section class="@card" style="padding:14px 16px">
+        <h2 style="margin:0 0 6px">Team chat</h2>
+        <p class="@muted" style="margin:0">Work conversations with the people you are allowed to reach.
+        Staff-to-staff and staff-to-developer chats are not available on this platform.</p>
+    </section>
+
+    <section class="@card" style="padding:14px 16px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px">
+            <h2 style="margin:0">Conversations</h2>
+        </div>
+        @if (conversations.Count == 0)
+        {
+            <p class="@muted">No conversations yet. Start one below.</p>
+        }
+        else
+        {
+            @foreach (var c in conversations)
+            {
+                <a href="@base_/@c.ConversationId" style="display:flex;align-items:center;gap:10px;padding:10px 4px;border-bottom:1px solid rgba(128,128,128,.25);text-decoration:none;color:inherit">
+                    <div style="flex:1;min-width:0">
+                        <div style="font-weight:600">@c.OtherName <span class="@muted">· @c.OtherRoleLabel</span></div>
+                        <div class="@muted" style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+                            @(c.LastMessageBody is null ? "No messages yet" : (c.LastSenderId == myUserId ? "You: " : c.OtherName + ": ") + c.LastMessageBody)
+                        </div>
+                    </div>
+                    <div style="text-align:right">
+                        @if (c.UnreadCount > 0)
+                        {
+                            <span class="notif-badge" style="margin-left:0">@c.UnreadCount</span>
+                        }
+                        <div class="@muted">@Fmt(c.LastSentUtc)</div>
+                    </div>
+                </a>
+            }
+        }
+    </section>
+
+    @if (contacts.Count > 0)
+    {
+        <section class="@card" style="padding:14px 16px">
+            <h2 style="margin:0 0 10px">Start a conversation</h2>
+            <form method="post" action="@base_/start" style="display:flex;gap:8px;flex-wrap:wrap">
+                @Html.AntiForgeryToken()
+                <select name="otherUserId" style="min-width:220px">
+                    @foreach (var contact in contacts)
+                    {
+                        <option value="@contact.UserId">@contact.Name — @contact.RoleLabel</option>
+                    }
+                </select>
+                <button type="submit" class="@btn">Open conversation</button>
+            </form>
+        </section>
+    }
+    else
+    {
+        <p class="@muted">There is currently no one you can start a conversation with.</p>
+    }
+</div>

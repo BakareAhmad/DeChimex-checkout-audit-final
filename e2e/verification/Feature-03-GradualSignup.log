@@ -1,0 +1,35 @@
+PASS    owner signed in (http://127.0.0.1:5119/admin/dashboard)
+PASS    category created (url=http://127.0.0.1:5119/admin/categories)
+PASS    product created (url=http://127.0.0.1:5119/admin/products/0839af28-326f-4a4e-ac9e-ed68d2c2ea2d)
+PASS    signup asks for only email+password (fields=['Email', 'Password'])
+PASS    signup does not ask for ConfirmPassword
+PASS    signup does not ask for FirstName
+PASS    signup does not ask for LastName
+PASS    signup does not ask for Phone
+PASS    signup does not ask for Address
+PASS 01 signup-form-email-and-password-only
+PASS    weak password rejected with the existing rule
+PASS 02 signup-validation-weak-password-rejected
+PASS    signup handed to the existing verification gate (http://127.0.0.1:5119/Account/VerifyEmail?email=gradual.1791402426@example.com)
+PASS 03 signup-existing-email-verification-step
+PASS    new account signed in normally (http://127.0.0.1:5119/portal)
+PASS    no profile wall after signup - portal opens normally
+PASS 04 new-account-portal-no-profile-wall
+PASS    product is in the cart
+PASS 05 customer-cart-with-product
+PASS    checkout routed to profile completion (http://127.0.0.1:5119/portal/profile/complete?returnUrl=%2Fcheckout)
+PASS    completion step explains why the details are needed
+PASS    completion step never re-asks email/password (fields=['ReturnUrl', 'FirstName', 'LastName', 'Phone', '__RequestVerificationToken'])
+PASS 06 checkout-prompts-complete-your-profile
+PASS    invalid phone rejected inline
+PASS 07 profile-completion-validation-error
+PASS    returned to checkout after saving (http://127.0.0.1:5119/checkout)
+PASS    checkout is no longer gated
+PASS 08 profile-saved-back-to-checkout
+PASS    order placed (http://127.0.0.1:5119/checkout/complete/75ffe2f0-f19a-4855-b8c9-baa1d5e44ed1)
+PASS 09 order-placed-after-profile-completion
+PASS    returning customer signed in (http://127.0.0.1:5119/portal)
+PASS    complete profile goes straight to checkout - no prompt
+PASS 10 complete-profile-no-prompt-at-checkout
+
+RESULT: 23 checks passed, 10 screenshots

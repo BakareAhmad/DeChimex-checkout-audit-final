@@ -1,0 +1,53 @@
+PASS    owner signed in (url=http://127.0.0.1:5119/admin/security/password)
+PASS 01 admin-owner-signed-in -> 01-admin-owner-signed-in.png
+PASS 02 admin-gallery-index-start -> 02-admin-gallery-index-start.png
+PASS    media input accept offers images AND videos to mobile pickers (.jpg,.jpeg,.png,.webp,.gif,.mp4,.webm,video/mp4,video/webm)
+PASS    no capture attribute anywhere - phone library stays selectable
+PASS 03 admin-create-form-video-capable -> 03-admin-create-form-video-capable.png
+PASS    'Sunrise mugs' saved -> redirected to admin index (http://127.0.0.1:5119/admin/gallery)
+PASS    'Sunrise mugs' tile listed in admin index
+PASS 04 admin-desktop-image-post-saved -> 04-admin-desktop-image-post-saved.png
+PASS    'Studio reel' saved -> redirected to admin index (http://127.0.0.1:5119/admin/gallery)
+PASS    'Studio reel' tile listed in admin index
+PASS 05 admin-desktop-video-post-saved -> 05-admin-desktop-video-post-saved.png
+PASS    unsupported extension rejected server-side
+PASS 06 admin-rejected-unsupported-type -> 06-admin-rejected-unsupported-type.png
+PASS    oversized video rejected server-side
+PASS 07 admin-rejected-oversized-video -> 07-admin-rejected-oversized-video.png
+PASS    mixed image+video pick is normalized: only the image stays in the submit preview
+PASS 08 admin-mixed-selection-normalized -> 08-admin-mixed-selection-normalized.png
+PASS    desktop /gallery grid visible, 2/2 items, no h-overflow ({"present": true, "visible": true, "display": "grid", "items": 2, "items_visible": 2, "video_tiles": 1, "box": {"x": 124, "y": 246.59375, "width": 1192, "height": 147.25}, "h_overflow": false})
+PASS 09 public-gallery-desktop -> 09-public-gallery-desktop.png
+PASS    desktop viewer plays the uploaded video ({"found": true, "readyState": 4, "currentTime": 1.359503, "paused": false, "duration": 52.208333, "src": "b19a5c49614647159c756230dcd0be21.mp4"})
+PASS 10 public-desktop-video-viewer-playing -> 10-public-desktop-video-viewer-playing.png
+PASS    Gallery entry visible in the mobile bottom nav
+PASS    home has no horizontal overflow on mobile
+PASS 11 mobile-home-bottom-nav-gallery -> 11-mobile-home-bottom-nav-gallery.png
+PASS    mobile /gallery (via bottom nav tap) grid visible, 2/2 items, video tile present ({"present": true, "visible": true, "display": "grid", "items": 2, "items_visible": 2, "video_tiles": 1, "box": {"x": 16, "y": 233.59375, "width": 358, "height": 118}, "h_overflow": false})
+PASS    bottom nav marks Gallery active on the gallery page
+PASS 12 mobile-gallery-via-bottom-nav -> 12-mobile-gallery-via-bottom-nav.png
+PASS    mobile viewer plays the uploaded video ({"found": true, "readyState": 4, "currentTime": 1.360513, "paused": false, "duration": 52.208333, "src": "b19a5c49614647159c756230dcd0be21.mp4"})
+PASS 13 mobile-video-viewer-playing -> 13-mobile-video-viewer-playing.png
+PASS    tablet /gallery grid visible ({"present": true, "visible": true, "display": "grid", "items": 2, "items_visible": 2, "video_tiles": 1, "box": {"x": 24, "y": 211.09375, "width": 720, "height": 142.40625}, "h_overflow": false})
+PASS 14 public-gallery-tablet-768 -> 14-public-gallery-tablet-768.png
+PASS    grid survives resize to wide ({"visible": true, "items_visible": 2, "h_overflow": false})
+PASS    grid survives resize to narrow ({"visible": true, "items_visible": 2, "h_overflow": false})
+PASS    grid survives resize to wide-again ({"visible": true, "items_visible": 2, "h_overflow": false})
+PASS 15 public-gallery-after-resize-cycle -> 15-public-gallery-after-resize-cycle.png
+PASS    owner signed in (url=http://127.0.0.1:5119/admin/dashboard)
+PASS 16 admin-mobile-create-form -> 16-admin-mobile-create-form.png
+PASS    picked video shows the dark video preview card before submit
+PASS 17 admin-mobile-video-picked-preview -> 17-admin-mobile-video-picked-preview.png
+PASS    mobile video upload saved (http://127.0.0.1:5119/admin/gallery)
+PASS    mobile-uploaded video listed in admin index
+PASS 18 admin-mobile-video-post-saved -> 18-admin-mobile-video-post-saved.png
+PASS    'Mobile print' saved -> redirected to admin index (http://127.0.0.1:5119/admin/gallery)
+PASS    'Mobile print' tile listed in admin index
+PASS 19 admin-mobile-image-post-saved -> 19-admin-mobile-image-post-saved.png
+PASS    mobile /gallery shows all 4 posts incl. 2 videos, no h-overflow ({"present": true, "visible": true, "display": "grid", "items": 4, "items_visible": 4, "video_tiles": 2, "box": {"x": 16, "y": 233.59375, "width": 358, "height": 238}, "h_overflow": false})
+PASS 20 public-mobile-all-posts -> 20-public-mobile-all-posts.png
+PASS    video uploaded FROM mobile plays on the public mobile page ({"found": true, "readyState": 4, "currentTime": 1.360775, "paused": false, "duration": 52.208333, "src": "8da9aa0e15644a429922a305d691adb6.mp4"})
+PASS 21 public-mobile-uploaded-video-playing -> 21-public-mobile-uploaded-video-playing.png
+GALLERY E2E DONE: {"public_desktop": {"present": true, "visible": true, "display": "grid", "items": 2, "items_visible": 2, "video_tiles": 1, "box": {"x": 124, "y": 246.59375, "width": 1192, "height": 147.25}, "h_overflow": false}, "desktop_video": {"found": true, "readyState": 4, "currentTime": 1.359503, "paused": false, "duration": 52.208333, "src": "b19a5c49614647159c756230dcd0be21.mp4"}, "public_mobile": {"present": true, "visible": true, "display": "grid", "items": 2, "items_visible": 2, "video_tiles": 1, "box": {"x": 16, "y": 233.59375, "width": 358, "height": 118}, "h_overflow": false}, "mobile_video": {"found": true, "readyState": 4, "currentTime": 1.360513, "paused": false, "duration": 52.208333, "src": "b19a5c49614647159c756230dcd0be21.mp4"}, "public_tablet": {"present": true, "visible": true, "display": "grid", "items": 2, "items_visible": 2, "video_tiles": 1, "box": {"x": 24, "y": 211.09375, "width": 720, "height": 142.40625}, "h_overflow": false}, "resize_cycle": {"wide": {"visible": true, "items_visible": 2, "h_overflow": false}, "narrow": {"visible": true, "items_visible": 2, "h_overflow": false}, "wide-again": {"visible": true, "items_visible": 2, "h_overflow": false}}, "public_mobile_final": {"present": true, "visible": true, "display": "grid", "items": 4, "items_visible": 4, "video_tiles": 2, "box": {"x": 16, "y": 233.59375, "width": 358, "height": 238}, "h_overflow": false}, "mobile_uploaded_video": {"found": true, "readyState": 4, "currentTime": 1.360775, "paused": false, "duration": 52.208333, "src": "8da9aa0e15644a429922a305d691adb6.mp4"}, "checks": 29, "screenshots": 21}
+
+RESULT: 29 passed, 0 failed (TAG=gallery), 21 screenshots

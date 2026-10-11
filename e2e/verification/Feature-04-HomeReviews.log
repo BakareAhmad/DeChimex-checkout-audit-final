@@ -1,0 +1,36 @@
+PASS    owner signed in (http://127.0.0.1:5119/admin/dashboard)
+PASS    seeded review 'Muinat B.' is managed in the admin portal
+PASS    seeded review 'Olalekan F.' is managed in the admin portal
+PASS    seeded review 'TokenPicks' is managed in the admin portal
+PASS    seeded review 'DE-YEMKING' is managed in the admin portal
+PASS 01 admin-reviews-seeded-records
+PASS    review form asks for name and text
+PASS    review form supports an optional image
+PASS    review form supports the optional rating
+PASS    review form supports publish state
+PASS 02 admin-new-review-form
+PASS    the new review is listed for staff after saving
+PASS 03 admin-reviews-after-create
+PASS    new review is editable (id=83feffdf-2006-45d0-8328-a66e524fdc08)
+PASS    home page renders the review slider track
+PASS    the old review card grid is gone
+PASS    the newly added review appears on the home page
+PASS    desktop shows several reviews per view (4)
+PASS    desktop slider has arrows
+PASS 04 home-slider-desktop
+PASS    desktop Next arrow advances the slider (0 -> 401)
+PASS 05 home-slider-desktop-next
+PASS    mobile shows one review per slide (slide 354px / track 358px)
+PASS    mobile slider has dots
+PASS 06 home-slider-mobile
+PASS    mobile touch swipe moves the slider (0 -> 366)
+PASS 07 home-slider-mobile-after-swipe
+PASS    the edited review shows its new wording on the home page
+PASS    the old wording is gone after the edit
+PASS 08 home-slider-after-edit
+PASS    the deleted review leaves the admin list
+PASS    the deleted review is gone from the home page
+PASS    the seeded reviews still display
+PASS 09 home-slider-after-delete
+
+RESULT: 25 checks passed, 9 screenshots

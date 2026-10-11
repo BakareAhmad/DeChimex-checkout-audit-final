@@ -1,0 +1,23 @@
+PASS    login has an eye toggle (hidden by default)
+PASS    the toggle carries eye and eye-slash icons
+PASS    no text Show/Hide control on login
+PASS    clicking the eye reveals the password
+PASS    the toggle state is clearly indicated (aria + eye-slash)
+PASS    clicking again hides it
+PASS 01 login-eye-toggle-desktop
+PASS    the eye toggle works on mobile
+PASS    tap target is comfortable (30x30)
+PASS 02 login-eye-toggle-mobile
+PASS    owner signed in
+PASS    order filter shows 'Pending Payment'
+PASS    order filter shows 'In Production'
+PASS    no raw 'PendingPayment' option text
+PASS    the collapsed filter reads 'In Production'
+PASS 03 admin-orders-readable-statuses
+PASS    admin change-password has an eye toggle per field (3)
+PASS 04 admin-password-eye-toggles
+PASS    new customer signed in
+PASS    portal change-password has an eye toggle per field (3)
+PASS 05 portal-password-eye-toggles
+
+RESULT: 16 checks passed, 5 screenshots

@@ -1,0 +1,238 @@
+
+===== Feature-01-GalleryMobile =====
+PASS    owner signed in (url=http://127.0.0.1:5119/admin/security/password)
+PASS 01 admin-owner-signed-in -> 01-admin-owner-signed-in.png
+PASS 02 admin-gallery-index-start -> 02-admin-gallery-index-start.png
+PASS    media input accept offers images AND videos to mobile pickers (.jpg,.jpeg,.png,.webp,.gif,.mp4,.webm,video/mp4,video/webm)
+PASS    no capture attribute anywhere - phone library stays selectable
+PASS 03 admin-create-form-video-capable -> 03-admin-create-form-video-capable.png
+PASS    'Sunrise mugs' saved -> redirected to admin index (http://127.0.0.1:5119/admin/gallery)
+PASS    'Sunrise mugs' tile listed in admin index
+PASS 04 admin-desktop-image-post-saved -> 04-admin-desktop-image-post-saved.png
+PASS    'Studio reel' saved -> redirected to admin index (http://127.0.0.1:5119/admin/gallery)
+PASS    'Studio reel' tile listed in admin index
+PASS 05 admin-desktop-video-post-saved -> 05-admin-desktop-video-post-saved.png
+PASS    unsupported extension rejected server-side
+PASS 06 admin-rejected-unsupported-type -> 06-admin-rejected-unsupported-type.png
+PASS    oversized video rejected server-side
+PASS 07 admin-rejected-oversized-video -> 07-admin-rejected-oversized-video.png
+PASS    mixed image+video pick is normalized: only the image stays in the submit preview
+PASS 08 admin-mixed-selection-normalized -> 08-admin-mixed-selection-normalized.png
+PASS    desktop /gallery grid visible, 2/2 items, no h-overflow ({"present": true, "visible": true, "display": "grid", "items": 2, "items_visible": 2, "video_tiles": 1, "box": {"x": 124, "y": 246.59375, "width": 1192, "height": 147.25}, "h_overflow": false})
+PASS 09 public-gallery-desktop -> 09-public-gallery-desktop.png
+PASS    desktop viewer plays the uploaded video ({"found": true, "readyState": 4, "currentTime": 1.359503, "paused": false, "duration": 52.208333, "src": "b19a5c49614647159c756230dcd0be21.mp4"})
+PASS 10 public-desktop-video-viewer-playing -> 10-public-desktop-video-viewer-playing.png
+PASS    Gallery entry visible in the mobile bottom nav
+PASS    home has no horizontal overflow on mobile
+PASS 11 mobile-home-bottom-nav-gallery -> 11-mobile-home-bottom-nav-gallery.png
+PASS    mobile /gallery (via bottom nav tap) grid visible, 2/2 items, video tile present ({"present": true, "visible": true, "display": "grid", "items": 2, "items_visible": 2, "video_tiles": 1, "box": {"x": 16, "y": 233.59375, "width": 358, "height": 118}, "h_overflow": false})
+PASS    bottom nav marks Gallery active on the gallery page
+PASS 12 mobile-gallery-via-bottom-nav -> 12-mobile-gallery-via-bottom-nav.png
+PASS    mobile viewer plays the uploaded video ({"found": true, "readyState": 4, "currentTime": 1.360513, "paused": false, "duration": 52.208333, "src": "b19a5c49614647159c756230dcd0be21.mp4"})
+PASS 13 mobile-video-viewer-playing -> 13-mobile-video-viewer-playing.png
+PASS    tablet /gallery grid visible ({"present": true, "visible": true, "display": "grid", "items": 2, "items_visible": 2, "video_tiles": 1, "box": {"x": 24, "y": 211.09375, "width": 720, "height": 142.40625}, "h_overflow": false})
+PASS 14 public-gallery-tablet-768 -> 14-public-gallery-tablet-768.png
+PASS    grid survives resize to wide ({"visible": true, "items_visible": 2, "h_overflow": false})
+PASS    grid survives resize to narrow ({"visible": true, "items_visible": 2, "h_overflow": false})
+PASS    grid survives resize to wide-again ({"visible": true, "items_visible": 2, "h_overflow": false})
+PASS 15 public-gallery-after-resize-cycle -> 15-public-gallery-after-resize-cycle.png
+PASS    owner signed in (url=http://127.0.0.1:5119/admin/dashboard)
+PASS 16 admin-mobile-create-form -> 16-admin-mobile-create-form.png
+PASS    picked video shows the dark video preview card before submit
+PASS 17 admin-mobile-video-picked-preview -> 17-admin-mobile-video-picked-preview.png
+PASS    mobile video upload saved (http://127.0.0.1:5119/admin/gallery)
+PASS    mobile-uploaded video listed in admin index
+PASS 18 admin-mobile-video-post-saved -> 18-admin-mobile-video-post-saved.png
+PASS    'Mobile print' saved -> redirected to admin index (http://127.0.0.1:5119/admin/gallery)
+PASS    'Mobile print' tile listed in admin index
+PASS 19 admin-mobile-image-post-saved -> 19-admin-mobile-image-post-saved.png
+PASS    mobile /gallery shows all 4 posts incl. 2 videos, no h-overflow ({"present": true, "visible": true, "display": "grid", "items": 4, "items_visible": 4, "video_tiles": 2, "box": {"x": 16, "y": 233.59375, "width": 358, "height": 238}, "h_overflow": false})
+PASS 20 public-mobile-all-posts -> 20-public-mobile-all-posts.png
+PASS    video uploaded FROM mobile plays on the public mobile page ({"found": true, "readyState": 4, "currentTime": 1.360775, "paused": false, "duration": 52.208333, "src": "8da9aa0e15644a429922a305d691adb6.mp4"})
+PASS 21 public-mobile-uploaded-video-playing -> 21-public-mobile-uploaded-video-playing.png
+RESULT: 29 passed, 0 failed (TAG=gallery), 21 screenshots
+
+===== Feature-02-DeliveryFee =====
+PASS    owner signed in (http://127.0.0.1:5119/admin/dashboard)
+PASS    service created (url=http://127.0.0.1:5119/admin/services)
+PASS    settings Delivery Fee add-on defaults to 0 (got 0)
+PASS 01 admin-settings-delivery-addon-default-zero
+PASS    configured Delivery Fee add-on saved as 2000 (got 2000)
+PASS 02 admin-settings-delivery-set-2000
+PASS    new-order Delivery Fee add-on prefilled with configured 2000 (got 2000)
+PASS 03 admin-neworder-addon-prefilled-2000
+PASS    order details show the 2,000 delivery add-on line
+PASS 04 admin-order-details-delivery-included
+PASS    pickup order carries no delivery charge
+PASS 05 admin-order-details-pickup-no-delivery
+RESULT: 7 passed, 0 failed, 5 screenshots
+
+===== Feature-03-GradualSignup =====
+PASS    owner signed in (http://127.0.0.1:5119/admin/dashboard)
+PASS    category created (url=http://127.0.0.1:5119/admin/categories)
+PASS    product created (url=http://127.0.0.1:5119/admin/products/0839af28-326f-4a4e-ac9e-ed68d2c2ea2d)
+PASS    signup asks for only email+password (fields=['Email', 'Password'])
+PASS    signup does not ask for ConfirmPassword
+PASS    signup does not ask for FirstName
+PASS    signup does not ask for LastName
+PASS    signup does not ask for Phone
+PASS    signup does not ask for Address
+PASS 01 signup-form-email-and-password-only
+PASS    weak password rejected with the existing rule
+PASS 02 signup-validation-weak-password-rejected
+PASS    signup handed to the existing verification gate (http://127.0.0.1:5119/Account/VerifyEmail?email=gradual.1791402426@example.com)
+PASS 03 signup-existing-email-verification-step
+PASS    new account signed in normally (http://127.0.0.1:5119/portal)
+PASS    no profile wall after signup - portal opens normally
+PASS 04 new-account-portal-no-profile-wall
+PASS    product is in the cart
+PASS 05 customer-cart-with-product
+PASS    checkout routed to profile completion (http://127.0.0.1:5119/portal/profile/complete?returnUrl=%2Fcheckout)
+PASS    completion step explains why the details are needed
+PASS    completion step never re-asks email/password (fields=['ReturnUrl', 'FirstName', 'LastName', 'Phone', '__RequestVerificationToken'])
+PASS 06 checkout-prompts-complete-your-profile
+PASS    invalid phone rejected inline
+PASS 07 profile-completion-validation-error
+PASS    returned to checkout after saving (http://127.0.0.1:5119/checkout)
+PASS    checkout is no longer gated
+PASS 08 profile-saved-back-to-checkout
+PASS    order placed (http://127.0.0.1:5119/checkout/complete/75ffe2f0-f19a-4855-b8c9-baa1d5e44ed1)
+PASS 09 order-placed-after-profile-completion
+PASS    returning customer signed in (http://127.0.0.1:5119/portal)
+PASS    complete profile goes straight to checkout - no prompt
+PASS 10 complete-profile-no-prompt-at-checkout
+RESULT: 23 checks passed, 10 screenshots
+
+===== Feature-04-HomeReviews =====
+PASS    owner signed in (http://127.0.0.1:5119/admin/dashboard)
+PASS    seeded review 'Muinat B.' is managed in the admin portal
+PASS    seeded review 'Olalekan F.' is managed in the admin portal
+PASS    seeded review 'TokenPicks' is managed in the admin portal
+PASS    seeded review 'DE-YEMKING' is managed in the admin portal
+PASS 01 admin-reviews-seeded-records
+PASS    review form asks for name and text
+PASS    review form supports an optional image
+PASS    review form supports the optional rating
+PASS    review form supports publish state
+PASS 02 admin-new-review-form
+PASS    the new review is listed for staff after saving
+PASS 03 admin-reviews-after-create
+PASS    new review is editable (id=83feffdf-2006-45d0-8328-a66e524fdc08)
+PASS    home page renders the review slider track
+PASS    the old review card grid is gone
+PASS    the newly added review appears on the home page
+PASS    desktop shows several reviews per view (4)
+PASS    desktop slider has arrows
+PASS 04 home-slider-desktop
+PASS    desktop Next arrow advances the slider (0 -> 401)
+PASS 05 home-slider-desktop-next
+PASS    mobile shows one review per slide (slide 354px / track 358px)
+PASS    mobile slider has dots
+PASS 06 home-slider-mobile
+PASS    mobile touch swipe moves the slider (0 -> 366)
+PASS 07 home-slider-mobile-after-swipe
+PASS    the edited review shows its new wording on the home page
+PASS    the old wording is gone after the edit
+PASS 08 home-slider-after-edit
+PASS    the deleted review leaves the admin list
+PASS    the deleted review is gone from the home page
+PASS    the seeded reviews still display
+PASS 09 home-slider-after-delete
+RESULT: 25 checks passed, 9 screenshots
+
+===== Feature-05-Announcements =====
+PASS    no announcement -> no pill on the customer home page
+PASS    owner signed in (http://127.0.0.1:5119/admin/dashboard)
+PASS    admin shows the empty state
+PASS 01 admin-announcements-empty
+PASS    form offers message + optional visibility window
+PASS    form offers the active switch
+PASS 02 admin-announcement-form
+PASS    backwards visibility window is rejected
+PASS    the saved announcement is listed as Live
+PASS 03 admin-announcements-live
+PASS    the pill renders above the customer header on desktop
+PASS    pill carries the message
+PASS    text fits the desktop viewport -> pill stays static (subtle)
+PASS    the pill stays compact (30px tall)
+PASS 04 home-pill-desktop
+PASS    the pill renders on mobile
+PASS    the long message marquee-animates on mobile too
+PASS    mobile pill is compact (30px tall)
+PASS 05 home-pill-mobile
+PASS    vertical page scrolling still works on mobile
+PASS    the edited wording shows in the pill
+PASS 06 home-pill-after-edit
+PASS    deactivating removes the pill from the customer app
+PASS    admin shows the announcement as Inactive
+PASS 07 home-pill-after-deactivate
+PASS    active-but-future announcement shows as Scheduled
+PASS    a scheduled announcement stays hidden until its start date
+PASS 08 admin-announcements-scheduled
+PASS    delete returns the admin list to empty
+PASS    the customer app shows nothing after delete
+PASS 09 home-after-delete
+RESULT: 22 checks passed, 9 screenshots
+
+===== Feature-06-UiPolish =====
+PASS    login has an eye toggle (hidden by default)
+PASS    the toggle carries eye and eye-slash icons
+PASS    no text Show/Hide control on login
+PASS    clicking the eye reveals the password
+PASS    the toggle state is clearly indicated (aria + eye-slash)
+PASS    clicking again hides it
+PASS 01 login-eye-toggle-desktop
+PASS    the eye toggle works on mobile
+PASS    tap target is comfortable (30x30)
+PASS 02 login-eye-toggle-mobile
+PASS    owner signed in
+PASS    order filter shows 'Pending Payment'
+PASS    order filter shows 'In Production'
+PASS    no raw 'PendingPayment' option text
+PASS    the collapsed filter reads 'In Production'
+PASS 03 admin-orders-readable-statuses
+PASS    admin change-password has an eye toggle per field (3)
+PASS 04 admin-password-eye-toggles
+PASS    new customer signed in
+PASS    portal change-password has an eye toggle per field (3)
+PASS 05 portal-password-eye-toggles
+RESULT: 16 checks passed, 5 screenshots
+
+===== Feature-07-TeamMessages =====
+PASS    owner signed in
+PASS    created Manager manager@e2e.test
+PASS    created SalesStaff staff@e2e.test
+PASS    created SalesStaff staff2@e2e.test
+PASS    owner sees the manager
+PASS    owner sees staff
+PASS    owner sees the developer
+PASS 01 owner-team-contacts
+PASS    manager signed in
+PASS    staff signed in
+PASS    owner message rendered
+PASS 02 owner-conversation-sent
+PASS    manager inbox preview shows the message live
+PASS 03 manager-unread-badge-live
+PASS    open conversation appended the message without a reload
+PASS 04 manager-live-message
+PASS    staff sees the manager
+PASS    staff sees the owner
+PASS    staff is NOT offered colleagues
+PASS    staff is NOT offered the developer
+PASS 05 staff-restricted-contacts
+PASS    developer sees the owner
+PASS    developer sees the manager
+PASS    developer is NOT offered staff
+PASS    developer message rendered on the portal side
+PASS 06 dev-portal-messages
+PASS    owner inbox shows the developer conversation
+RESULT: 21 checks passed, 6 screenshots
+
+===== SUMMARY =====
+OK   Feature-01-GalleryMobile
+OK   Feature-02-DeliveryFee
+OK   Feature-03-GradualSignup
+OK   Feature-04-HomeReviews
+OK   Feature-05-Announcements
+OK   Feature-06-UiPolish
+OK   Feature-07-TeamMessages

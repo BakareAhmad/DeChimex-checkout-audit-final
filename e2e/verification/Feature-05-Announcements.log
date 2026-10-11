@@ -1,0 +1,34 @@
+PASS    no announcement -> no pill on the customer home page
+PASS    owner signed in (http://127.0.0.1:5119/admin/dashboard)
+PASS    admin shows the empty state
+PASS 01 admin-announcements-empty
+PASS    form offers message + optional visibility window
+PASS    form offers the active switch
+PASS 02 admin-announcement-form
+PASS    backwards visibility window is rejected
+PASS    the saved announcement is listed as Live
+PASS 03 admin-announcements-live
+PASS    the pill renders above the customer header on desktop
+PASS    pill carries the message
+PASS    text fits the desktop viewport -> pill stays static (subtle)
+        (desktop group 955px vs view 1320px)
+PASS    the pill stays compact (30px tall)
+PASS 04 home-pill-desktop
+PASS    the pill renders on mobile
+PASS    the long message marquee-animates on mobile too
+PASS    mobile pill is compact (30px tall)
+PASS 05 home-pill-mobile
+PASS    vertical page scrolling still works on mobile
+PASS    the edited wording shows in the pill
+PASS 06 home-pill-after-edit
+PASS    deactivating removes the pill from the customer app
+PASS    admin shows the announcement as Inactive
+PASS 07 home-pill-after-deactivate
+PASS    active-but-future announcement shows as Scheduled
+PASS    a scheduled announcement stays hidden until its start date
+PASS 08 admin-announcements-scheduled
+PASS    delete returns the admin list to empty
+PASS    the customer app shows nothing after delete
+PASS 09 home-after-delete
+
+RESULT: 22 checks passed, 9 screenshots

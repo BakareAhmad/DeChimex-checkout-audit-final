@@ -1,0 +1,44 @@
+@model DeChimex.Contracts.InternalMessages.ConversationDetailDto
+@{
+    var dev = ViewBag.DevPortal is true;
+    Layout = dev ? "~/Views/Dev/_DevLayout.cshtml" : "_AdminLayout";
+    var base_ = dev ? "/dev/messages" : "/admin/team-messages";
+    var myUserId = ViewBag.MyUserId is Guid mid ? mid : Guid.Empty;
+    var card = dev ? "dv-card" : "card";
+    var muted = dev ? "dv-muted dv-small" : "text-sm text-muted";
+    var btn = dev ? "dv-btn" : "btn btn-primary";
+    string Fmt(DateTime utc) => utc.ToLocalTime().ToString("dd MMM yyyy HH:mm");
+}
+<div data-team-conversation="@Model.ConversationId" data-my-id="@myUserId" style="display:flex;flex-direction:column;gap:16px;max-width:860px">
+    <section class="@card" style="padding:14px 16px">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap">
+            <h2 style="margin:0">Conversation with @Model.OtherName <span class="@muted">· @Model.OtherRoleLabel</span></h2>
+            <a class="@muted" href="@base_">← All conversations</a>
+        </div>
+    </section>
+
+    <section class="@card" style="padding:14px 16px">
+        <div data-team-messages-list>
+            @if (Model.Messages.Count == 0)
+            {
+                <p class="@muted">No messages yet. Say hello below.</p>
+            }
+            @foreach (var m in Model.Messages)
+            {
+                <div data-team-msg="@m.Id" style="padding:10px 12px;border:1px solid rgba(128,128,128,.25);border-radius:10px;margin-bottom:8px;max-width:75%;@(m.IsMine ? "margin-left:auto" : "")">
+                    <div class="@muted">@m.SenderName · @Fmt(m.SentAtUtc)</div>
+                    <div style="white-space:pre-wrap;word-break:break-word">@m.Body</div>
+                </div>
+            }
+        </div>
+
+        <form method="post" action="@base_/@Model.ConversationId/send" style="display:flex;flex-direction:column;gap:8px;margin-top:12px">
+            @Html.AntiForgeryToken()
+            <label class="@muted" for="teamBody">Message</label>
+            <textarea id="teamBody" name="body" rows="3" maxlength="@DeChimex.Domain.Entities.InternalMessage.MaxBodyLength" required style="width:100%"></textarea>
+            <div style="display:flex;justify-content:flex-end">
+                <button type="submit" class="@btn">Send</button>
+            </div>
+        </form>
+    </section>
+</div>

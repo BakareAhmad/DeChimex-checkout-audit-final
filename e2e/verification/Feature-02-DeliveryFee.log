@@ -1,0 +1,14 @@
+PASS    owner signed in (http://127.0.0.1:5119/admin/dashboard)
+PASS    service created (url=http://127.0.0.1:5119/admin/services)
+PASS    settings Delivery Fee add-on defaults to 0 (got 0)
+PASS 01 admin-settings-delivery-addon-default-zero
+PASS    configured Delivery Fee add-on saved as 2000 (got 2000)
+PASS 02 admin-settings-delivery-set-2000
+PASS    new-order Delivery Fee add-on prefilled with configured 2000 (got 2000)
+PASS 03 admin-neworder-addon-prefilled-2000
+PASS    order details show the 2,000 delivery add-on line
+PASS 04 admin-order-details-delivery-included
+PASS    pickup order carries no delivery charge
+PASS 05 admin-order-details-pickup-no-delivery
+
+RESULT: 7 passed, 0 failed, 5 screenshots
